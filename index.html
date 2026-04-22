@@ -113,10 +113,10 @@
 	<img id="reveal" class="reveal-image" src="location.jpeg" alt="Revealed Image">
     <script>
       document.getElementById("gift").addEventListener("click", () => {
-        document.getElementById("sound").play();
 		document.getElementById("gift").classList.add("hidden");
 		setTimeout(() => {
           reveal.classList.add("visible");
+          document.getElementById("sound").play();
         }, 500);
       });
     </script>
