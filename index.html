@@ -2,7 +2,123 @@
 <html>
   <head>
     <title>Natjes Birthday Suprise</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #FFA;
+      }
+      h1 {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 4.22em;
+      }
+      .wrapper {
+        position: relative;
+        width: 80vw;
+        height: 80vw;
+      }
+      .hidden {
+        opacity: 0;
+        transform: scale(0.8);
+        pointer-events: none;
+      }
+      .logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        animation: shake 2.3s ease-out infinite;
+      }
+      @keyframes shake {
+        0% {
+          transform: translate(-50%, -50%);
+        }
+        10% {
+          transform: translate(-50%, -50%) rotate(-3deg);
+        }
+        20% {
+          transform: translate(-50%, -50%) rotate(3deg);
+        }
+        30% {
+          transform: translate(-50%, -50%) rotate(-2deg);
+        }
+        40% {
+          transform: translate(-50%, -50%) rotate(2deg);
+        }
+        99% { 
+          transform: translate(-50%, -50%) rotate(2deg);
+        }
+      }
+      .pulse {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80%;;
+        height: 80%;
+        background: #55EECC;
+        border-radius: 50%;
+        animation: pulse 2.4s ease-out infinite;
+      }
+      @keyframes pulse {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+        40% {
+          transform: translate(-50%, -50%) scale(1.6);
+          opacity: 0.1;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(0.9);
+          opacity: 0.9;
+        }
+        70% {
+          transform: translate(-50%, -50%) scale(1.8);
+          opacity: 0;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0;
+        }
+      }
+      .reveal-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        transition: opacity 0.8s ease;
+        width: 70vw;
+      }
+      .reveal-image.visible {
+        opacity: 1;
+      }
+    </style>
   </head>
   <body>
+    <audio id="sound" src="bday.mp3"></audio>
+    <h1>Natjes Birthday<br>Secret Gift</h1>
+    <div id="gift" class="wrapper">
+      <div class="pulse"></div>
+      <img class="logo" src="gift.svg" alt="Logo">
+    </div>
+	<img id="reveal" class="reveal-image" src="location.jpeg" alt="Revealed Image">
+    <script>
+      document.getElementById("gift").addEventListener("click", () => {
+        document.getElementById("sound").play();
+		document.getElementById("gift").classList.add("hidden");
+		setTimeout(() => {
+          reveal.classList.add("visible");
+        }, 500);
+      });
+    </script>
   </body>
 </html>
