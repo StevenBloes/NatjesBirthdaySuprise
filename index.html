@@ -3,13 +3,14 @@
   <head>
     <title>Natjes Birthday Suprise</title>
     <style>
-      body {
-        margin: 0;
-        height: 100vh;
+      
+      .center {
+        position: fixed;
+        inset: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #FFA;
+		background: #FFA;
       }
       h1 {
         position: absolute;
@@ -47,9 +48,11 @@
         }
         20% {
           transform: translate(-50%, -50%) rotate(3deg);
+		  scale: 1.05;
         }
         30% {
           transform: translate(-50%, -50%) rotate(-2deg);
+		  scale: 1.0;
         }
         40% {
           transform: translate(-50%, -50%) rotate(2deg);
@@ -105,18 +108,19 @@
   </head>
   <body>
     <audio id="sound" src="bday.mp3"></audio>
+	<div class="center">
     <h1>Natjes Birthday<br>Secret Gift</h1>
     <div id="gift" class="wrapper">
       <div class="pulse"></div>
       <img class="logo" src="gift.svg" alt="Logo">
     </div>
-	<img id="reveal" class="reveal-image" src="location.jpeg" alt="Revealed Image">
+	<img id="reveal" class="reveal-image" src="location.jpeg" alt="Revealed Image"></div>
     <script>
       document.getElementById("gift").addEventListener("click", () => {
+        document.getElementById("sound").play();
 		document.getElementById("gift").classList.add("hidden");
 		setTimeout(() => {
           reveal.classList.add("visible");
-          document.getElementById("sound").play();
         }, 500);
       });
     </script>
